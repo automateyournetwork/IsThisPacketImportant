@@ -1,0 +1,115 @@
+{
+  "$schema": "../specs/002-packet-classification-dscp/contracts/citations-schema.json",
+  "version": "1.0.0",
+  "lastUpdated": "2026-05-24T00:00:00Z",
+  "citations": [
+    {
+      "id": "dscp-definition",
+      "claim": "The Differentiated Services Code Point (DSCP) is a 6-bit field in the IP header that indicates the per-hop behavior for a packet.",
+      "rfc": 2474,
+      "section": "3",
+      "title": "Differentiated Services Field Definition",
+      "quote": "A replacement header field, called the DS field, is defined, which is intended to supersede the existing definitions of the IPv4 TOS octet and the IPv6 Traffic Class octet.",
+      "url": "https://www.rfc-editor.org/rfc/rfc2474#section-3"
+    },
+    {
+      "id": "ef-phb-definition",
+      "claim": "Expedited Forwarding (EF) provides low latency, low jitter, and assured bandwidth for real-time traffic.",
+      "rfc": 3246,
+      "section": "2",
+      "title": "The EF PHB",
+      "quote": "The EF PHB is defined as a forwarding treatment for a particular diffserv aggregate where the departure rate of the aggregate's packets from any diffserv node must equal or exceed a configurable rate.",
+      "url": "https://www.rfc-editor.org/rfc/rfc3246#section-2"
+    },
+    {
+      "id": "telephony-ef-mapping",
+      "claim": "VoIP and telephony traffic should be marked with EF (DSCP 46) for the Telephony Service Class.",
+      "rfc": 4594,
+      "section": "4.7",
+      "title": "Telephony Service Class",
+      "quote": "The Telephony Service Class is intended for voice traffic, such as VoIP. EF marked traffic SHOULD receive expedited forwarding with guaranteed bandwidth and low delay/jitter.",
+      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.7"
+    },
+    {
+      "id": "af-class-definition",
+      "claim": "Assured Forwarding (AF) provides four traffic classes with three drop precedences each, allowing differentiated service levels.",
+      "rfc": 2597,
+      "section": "2",
+      "title": "The AF PHB Group",
+      "quote": "The AF PHB group provides delivery of IP packets in four independently forwarded AF classes. Within each AF class, an IP packet can be assigned one of three different levels of drop precedence.",
+      "url": "https://www.rfc-editor.org/rfc/rfc2597#section-2"
+    },
+    {
+      "id": "realtime-interactive-mapping",
+      "claim": "Real-time interactive video traffic should be marked with AF41 for the Real-Time Interactive Service Class.",
+      "rfc": 4594,
+      "section": "4.6",
+      "title": "Real-Time Interactive Service Class",
+      "quote": "The Real-Time Interactive Service Class is intended for interactive applications with real-time traffic patterns, particularly video conferencing. This traffic SHOULD be marked AF41.",
+      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.6"
+    },
+    {
+      "id": "af-drop-precedence",
+      "claim": "Within an AF class, packets can have low (1), medium (2), or high (3) drop precedence. Higher precedence packets are dropped first during congestion.",
+      "rfc": 2597,
+      "section": "2.1",
+      "title": "AF Drop Precedence",
+      "quote": "Within each AF class, an IP packet is assigned one of three possible drop precedence values. In case of congestion, the drop precedence of a packet determines the relative importance of the packet within the AF class.",
+      "url": "https://www.rfc-editor.org/rfc/rfc2597#section-2"
+    },
+    {
+      "id": "high-throughput-mapping",
+      "claim": "High-throughput data traffic like backups and bulk transfers should be marked with AF11 for the High-Throughput Data Service Class.",
+      "rfc": 4594,
+      "section": "4.8",
+      "title": "High-Throughput Data Service Class",
+      "quote": "The High-Throughput Data Service Class is intended for data applications that are sensitive to loss but that can tolerate some delay. This includes store-and-forward applications.",
+      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.8"
+    },
+    {
+      "id": "standard-service-mapping",
+      "claim": "Standard traffic like email and web browsing should be marked with DSCP 0 (Best Effort) for the Standard Service Class.",
+      "rfc": 4594,
+      "section": "4.12",
+      "title": "Standard Service Class",
+      "quote": "The Standard Service Class is intended for undifferentiated traffic. This is the default behavior and is sometimes called 'Best Effort'. DSCP value of 0 is used.",
+      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.12"
+    },
+    {
+      "id": "be-default-behavior",
+      "claim": "Best Effort (BE) is the default forwarding behavior where packets receive no special treatment.",
+      "rfc": 2474,
+      "section": "4.1",
+      "title": "Default PHB",
+      "quote": "The Default PHB is the common, best-effort forwarding behavior available in existing routers. Packets marked with DSCP value of '000000' are forwarded using this PHB.",
+      "url": "https://www.rfc-editor.org/rfc/rfc2474#section-4.1"
+    },
+    {
+      "id": "cs-compatibility",
+      "claim": "Class Selector (CS) codepoints provide backwards compatibility with IP Precedence values from the original TOS field.",
+      "rfc": 2474,
+      "section": "4.2.2.2",
+      "title": "Class Selector Codepoints",
+      "quote": "These codepoints (CS0-CS7) are marked in a manner compatible with IP Precedence. The DSCP values are 'xxx000' where xxx maps to the three IP Precedence bits.",
+      "url": "https://www.rfc-editor.org/rfc/rfc2474#section-4.2.2.2"
+    },
+    {
+      "id": "low-priority-mapping",
+      "claim": "Low-priority bulk data like P2P traffic should be marked with CS1 for the Low-Priority Data Service Class.",
+      "rfc": 4594,
+      "section": "4.10",
+      "title": "Low-Priority Data Service Class",
+      "quote": "The Low-Priority Data Service Class is intended for non-real-time traffic that should consume available bandwidth only when higher priority traffic is not present.",
+      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.10"
+    },
+    {
+      "id": "scavenger-class",
+      "claim": "CS1 is used for scavenger traffic that should only use spare network capacity and be the first to suffer during congestion.",
+      "rfc": 4594,
+      "section": "4.10",
+      "title": "Low-Priority Data Service Class",
+      "quote": "This 'scavenger' or 'less than best effort' service class is intended for traffic that is expected to consume available bandwidth when other traffic is not present but must yield to higher priority traffic.",
+      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.10"
+    }
+  ]
+}

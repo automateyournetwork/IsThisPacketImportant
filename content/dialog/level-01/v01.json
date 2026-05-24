@@ -1,0 +1,64 @@
+{
+  "sceneId": "vignette-01",
+  "metadata": {
+    "traffic": "voip-emergency",
+    "timer": 8
+  },
+  "lines": [
+    {
+      "id": "v01-01",
+      "character": "mentor",
+      "text": "Incoming packet! This one's marked URGENT.",
+      "timing": { "start": 0, "end": 3 }
+    },
+    {
+      "id": "v01-02",
+      "character": "sender",
+      "text": "911 emergency! Someone needs help! Get this call through NOW!",
+      "timing": { "start": 3, "end": 7 },
+      "emotion": "urgent"
+    },
+    {
+      "id": "v01-03",
+      "character": "mentor",
+      "text": "A 911 call! This is voice over IP. What class should it get?",
+      "timing": { "start": 7, "end": 11 }
+    }
+  ],
+  "success": [
+    {
+      "id": "v01-success-01",
+      "character": "mentor",
+      "text": "Perfect! EF - Expedited Forwarding. Voice needs low latency and jitter.",
+      "timing": { "start": 0, "end": 4 }
+    },
+    {
+      "id": "v01-success-02",
+      "character": "sender",
+      "text": "Call connected! Help is on the way!",
+      "timing": { "start": 4, "end": 7 },
+      "emotion": "relieved"
+    }
+  ],
+  "failure": [
+    {
+      "id": "v01-fail-01",
+      "character": "mentor",
+      "text": "Not quite. Voice calls need EF - Expedited Forwarding. DSCP 46.",
+      "timing": { "start": 0, "end": 4 }
+    },
+    {
+      "id": "v01-fail-02",
+      "character": "sender",
+      "text": "The call is breaking up! Hello? Can anyone hear me?",
+      "timing": { "start": 4, "end": 8 },
+      "emotion": "distressed"
+    },
+    {
+      "id": "v01-fail-03",
+      "character": "mentor",
+      "text": "Let's try again. Remember: VoIP equals EF.",
+      "timing": { "start": 8, "end": 12 }
+    }
+  ]
+}

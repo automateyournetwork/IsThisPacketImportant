@@ -1,0 +1,603 @@
+{
+  "$schema": "../specs/002-packet-classification-dscp/contracts/level-schema.json",
+  "id": "rush-hour-router-7",
+  "name": "Rush Hour at Router 7",
+  "description": "It's 5pm and packets are flooding in. Can you classify them correctly before the network melts down?",
+  "metadata": {
+    "author": "Is This Packet Important?",
+    "version": "1.0.0",
+    "estimatedDuration": 15,
+    "difficulty": "tutorial"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "intro",
+      "assets": {
+        "intro": "cutscenes/level-01/intro.mp4",
+        "music": "audio/music/level-01-ambient.mp3"
+      },
+      "dialog": "content/dialog/level-01/intro.json",
+      "next": {
+        "success": "vignette-01",
+        "failure": "vignette-01"
+      }
+    },
+    {
+      "id": "vignette-01",
+      "type": "decision",
+      "traffic": {
+        "id": "voip-emergency",
+        "name": "Emergency VoIP Call",
+        "description": "A 911 emergency call needs to get through immediately. Lives may be at stake!",
+        "correctClass": "EF",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.7",
+          "title": "Telephony Service Class"
+        }
+      },
+      "timer": {
+        "duration": 8,
+        "type": "tutorial",
+        "warningAt": 3
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v01-intro.mp4",
+        "success": "cutscenes/level-01/v01-success.mp4",
+        "failure": "cutscenes/level-01/v01-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v01.json",
+      "citations": ["telephony-ef-mapping", "ef-phb-definition"],
+      "unlockedCategories": ["EF", "BE"],
+      "firstUseTerms": [
+        {
+          "term": "DSCP",
+          "definition": "Differentiated Services Code Point - a 6-bit field in the IP header that indicates how a packet should be treated.",
+          "citation": "dscp-definition"
+        },
+        {
+          "term": "EF (Expedited Forwarding)",
+          "definition": "The highest priority PHB, providing low latency, low jitter, and assured bandwidth for real-time traffic.",
+          "citation": "ef-phb-definition"
+        }
+      ],
+      "next": {
+        "success": "vignette-02",
+        "failure": "vignette-01-retry",
+        "timeout": "vignette-01-retry"
+      }
+    },
+    {
+      "id": "vignette-01-retry",
+      "type": "decision",
+      "traffic": {
+        "id": "voip-emergency",
+        "name": "Emergency VoIP Call",
+        "description": "That 911 call is still waiting! Let's try again.",
+        "correctClass": "EF",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.7",
+          "title": "Telephony Service Class"
+        }
+      },
+      "timer": {
+        "duration": 8,
+        "type": "tutorial",
+        "warningAt": 3
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v01-retry-intro.mp4",
+        "success": "cutscenes/level-01/v01-success.mp4",
+        "failure": "cutscenes/level-01/v01-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v01-retry.json",
+      "citations": ["telephony-ef-mapping"],
+      "unlockedCategories": ["EF", "BE"],
+      "next": {
+        "success": "vignette-02",
+        "failure": "vignette-01-retry",
+        "timeout": "vignette-01-retry"
+      }
+    },
+    {
+      "id": "vignette-02",
+      "type": "decision",
+      "traffic": {
+        "id": "live-video-stream",
+        "name": "Live Video Conference",
+        "description": "The CEO is presenting quarterly results live to shareholders. Pixelation would be embarrassing!",
+        "correctClass": "AF41",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.6",
+          "title": "Real-Time Interactive Service Class"
+        }
+      },
+      "timer": {
+        "duration": 5,
+        "type": "standard",
+        "warningAt": 2
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v02-intro.mp4",
+        "success": "cutscenes/level-01/v02-success.mp4",
+        "failure": "cutscenes/level-01/v02-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v02.json",
+      "citations": ["realtime-interactive-mapping", "af-class-definition"],
+      "unlockedCategories": ["EF", "AF", "BE"],
+      "firstUseTerms": [
+        {
+          "term": "AF (Assured Forwarding)",
+          "definition": "A group of PHBs providing different levels of forwarding assurance. Four classes (AF1-4) with three drop precedences each.",
+          "citation": "af-class-definition"
+        }
+      ],
+      "next": {
+        "success": "vignette-03",
+        "failure": "vignette-02-fail",
+        "timeout": "vignette-02-fail"
+      }
+    },
+    {
+      "id": "vignette-02-fail",
+      "type": "decision",
+      "traffic": {
+        "id": "live-video-stream",
+        "name": "Live Video Conference",
+        "description": "The stream is stuttering! Quick, fix the classification!",
+        "correctClass": "AF41",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.6",
+          "title": "Real-Time Interactive Service Class"
+        }
+      },
+      "timer": {
+        "duration": 5,
+        "type": "standard",
+        "warningAt": 2
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v02-fail-intro.mp4",
+        "success": "cutscenes/level-01/v02-success.mp4",
+        "failure": "cutscenes/level-01/v02-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v02-fail.json",
+      "citations": ["realtime-interactive-mapping"],
+      "unlockedCategories": ["EF", "AF", "BE"],
+      "next": {
+        "success": "vignette-03",
+        "failure": "vignette-02-fail",
+        "timeout": "vignette-02-fail"
+      }
+    },
+    {
+      "id": "vignette-03",
+      "type": "decision",
+      "traffic": {
+        "id": "bulk-backup",
+        "name": "Nightly Backup Transfer",
+        "description": "The backup server is syncing terabytes of data. Important, but not urgent.",
+        "correctClass": "AF11",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.8",
+          "title": "High-Throughput Data Service Class"
+        }
+      },
+      "timer": {
+        "duration": 5,
+        "type": "standard",
+        "warningAt": 2
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v03-intro.mp4",
+        "success": "cutscenes/level-01/v03-success.mp4",
+        "failure": "cutscenes/level-01/v03-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v03.json",
+      "citations": ["high-throughput-mapping", "af-drop-precedence"],
+      "unlockedCategories": ["EF", "AF", "BE"],
+      "firstUseTerms": [
+        {
+          "term": "Drop Precedence",
+          "definition": "Within an AF class, packets can have low (1), medium (2), or high (3) drop precedence. Higher precedence packets are dropped first during congestion.",
+          "citation": "af-drop-precedence"
+        }
+      ],
+      "next": {
+        "success": "vignette-04",
+        "failure": "vignette-03-fail",
+        "timeout": "vignette-03-fail"
+      }
+    },
+    {
+      "id": "vignette-03-fail",
+      "type": "decision",
+      "traffic": {
+        "id": "bulk-backup",
+        "name": "Nightly Backup Transfer",
+        "description": "Backup is competing with real-time traffic. Classify it properly!",
+        "correctClass": "AF11",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.8",
+          "title": "High-Throughput Data Service Class"
+        }
+      },
+      "timer": {
+        "duration": 5,
+        "type": "standard",
+        "warningAt": 2
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v03-fail-intro.mp4",
+        "success": "cutscenes/level-01/v03-success.mp4",
+        "failure": "cutscenes/level-01/v03-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v03-fail.json",
+      "citations": ["high-throughput-mapping"],
+      "unlockedCategories": ["EF", "AF", "BE"],
+      "next": {
+        "success": "vignette-04",
+        "failure": "vignette-03-fail",
+        "timeout": "vignette-03-fail"
+      }
+    },
+    {
+      "id": "vignette-04",
+      "type": "decision",
+      "traffic": {
+        "id": "routine-email",
+        "name": "Office Email Sync",
+        "description": "Just routine email synchronization. Nothing special here.",
+        "correctClass": "BE",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.12",
+          "title": "Standard Service Class"
+        }
+      },
+      "timer": {
+        "duration": 5,
+        "type": "standard",
+        "warningAt": 2
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v04-intro.mp4",
+        "success": "cutscenes/level-01/v04-success.mp4",
+        "failure": "cutscenes/level-01/v04-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v04.json",
+      "citations": ["standard-service-mapping", "be-default-behavior"],
+      "unlockedCategories": ["EF", "AF", "CS", "BE"],
+      "firstUseTerms": [
+        {
+          "term": "BE (Best Effort)",
+          "definition": "The default forwarding behavior. Packets get no special treatment and are delivered on a best-effort basis.",
+          "citation": "be-default-behavior"
+        },
+        {
+          "term": "CS (Class Selector)",
+          "definition": "Codepoints for backwards compatibility with IP Precedence. CS0 equals Best Effort.",
+          "citation": "cs-compatibility"
+        }
+      ],
+      "next": {
+        "success": "vignette-05",
+        "failure": "vignette-04-fail",
+        "timeout": "vignette-04-fail"
+      }
+    },
+    {
+      "id": "vignette-04-fail",
+      "type": "decision",
+      "traffic": {
+        "id": "routine-email",
+        "name": "Office Email Sync",
+        "description": "Email doesn't need priority treatment. Keep it simple!",
+        "correctClass": "BE",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.12",
+          "title": "Standard Service Class"
+        }
+      },
+      "timer": {
+        "duration": 5,
+        "type": "standard",
+        "warningAt": 2
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v04-fail-intro.mp4",
+        "success": "cutscenes/level-01/v04-success.mp4",
+        "failure": "cutscenes/level-01/v04-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v04-fail.json",
+      "citations": ["standard-service-mapping"],
+      "unlockedCategories": ["EF", "AF", "CS", "BE"],
+      "next": {
+        "success": "vignette-05",
+        "failure": "vignette-04-fail",
+        "timeout": "vignette-04-fail"
+      }
+    },
+    {
+      "id": "vignette-05",
+      "type": "decision",
+      "traffic": {
+        "id": "background-flood",
+        "name": "P2P Software Update",
+        "description": "Someone's downloading a massive game update via P2P. This could flood the network!",
+        "correctClass": "CS1",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.10",
+          "title": "Low-Priority Data Service Class"
+        }
+      },
+      "timer": {
+        "duration": 5,
+        "type": "standard",
+        "warningAt": 2
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v05-intro.mp4",
+        "success": "cutscenes/level-01/v05-success.mp4",
+        "failure": "cutscenes/level-01/v05-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v05.json",
+      "citations": ["low-priority-mapping", "scavenger-class"],
+      "unlockedCategories": ["EF", "AF", "CS", "BE"],
+      "firstUseTerms": [
+        {
+          "term": "Scavenger Class",
+          "definition": "CS1 is used for low-priority, high-bandwidth traffic that should only use spare capacity. Sometimes called 'scavenger' class.",
+          "citation": "scavenger-class"
+        }
+      ],
+      "next": {
+        "success": "boss-intro",
+        "failure": "vignette-05-fail",
+        "timeout": "vignette-05-fail"
+      }
+    },
+    {
+      "id": "vignette-05-fail",
+      "type": "decision",
+      "traffic": {
+        "id": "background-flood",
+        "name": "P2P Software Update",
+        "description": "The P2P traffic is still hogging bandwidth! Deprioritize it!",
+        "correctClass": "CS1",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.10",
+          "title": "Low-Priority Data Service Class"
+        }
+      },
+      "timer": {
+        "duration": 5,
+        "type": "standard",
+        "warningAt": 2
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/v05-fail-intro.mp4",
+        "success": "cutscenes/level-01/v05-success.mp4",
+        "failure": "cutscenes/level-01/v05-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/v05-fail.json",
+      "citations": ["low-priority-mapping"],
+      "unlockedCategories": ["EF", "AF", "CS", "BE"],
+      "next": {
+        "success": "boss-intro",
+        "failure": "vignette-05-fail",
+        "timeout": "vignette-05-fail"
+      }
+    },
+    {
+      "id": "boss-intro",
+      "type": "intro",
+      "assets": {
+        "intro": "cutscenes/level-01/boss-intro.mp4",
+        "music": "audio/music/level-01-boss.mp3"
+      },
+      "dialog": "content/dialog/level-01/boss-intro.json",
+      "next": {
+        "success": "boss-01",
+        "failure": "boss-01"
+      }
+    },
+    {
+      "id": "boss-01",
+      "type": "boss",
+      "traffic": {
+        "id": "boss-voip",
+        "name": "Conference Call",
+        "description": "Multiple VoIP streams incoming!",
+        "correctClass": "EF",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.7",
+          "title": "Telephony Service Class"
+        }
+      },
+      "timer": {
+        "duration": 3,
+        "type": "boss",
+        "warningAt": 1
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/boss-01.mp4",
+        "success": "cutscenes/level-01/boss-01-success.mp4",
+        "failure": "cutscenes/level-01/boss-01-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/boss-01.json",
+      "citations": ["telephony-ef-mapping"],
+      "unlockedCategories": ["EF", "AF", "CS", "BE"],
+      "next": {
+        "success": "boss-02",
+        "failure": "boss-02",
+        "timeout": "boss-02"
+      }
+    },
+    {
+      "id": "boss-02",
+      "type": "boss",
+      "traffic": {
+        "id": "boss-video",
+        "name": "Security Camera Feed",
+        "description": "Security footage streaming!",
+        "correctClass": "AF41",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.6",
+          "title": "Real-Time Interactive Service Class"
+        }
+      },
+      "timer": {
+        "duration": 3,
+        "type": "boss",
+        "warningAt": 1
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/boss-02.mp4",
+        "success": "cutscenes/level-01/boss-02-success.mp4",
+        "failure": "cutscenes/level-01/boss-02-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/boss-02.json",
+      "citations": ["realtime-interactive-mapping"],
+      "unlockedCategories": ["EF", "AF", "CS", "BE"],
+      "next": {
+        "success": "boss-03",
+        "failure": "boss-03",
+        "timeout": "boss-03"
+      }
+    },
+    {
+      "id": "boss-03",
+      "type": "boss",
+      "traffic": {
+        "id": "boss-bulk",
+        "name": "Database Replication",
+        "description": "Critical data sync in progress!",
+        "correctClass": "AF11",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.8",
+          "title": "High-Throughput Data Service Class"
+        }
+      },
+      "timer": {
+        "duration": 3,
+        "type": "boss",
+        "warningAt": 1
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/boss-03.mp4",
+        "success": "cutscenes/level-01/boss-03-success.mp4",
+        "failure": "cutscenes/level-01/boss-03-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/boss-03.json",
+      "citations": ["high-throughput-mapping"],
+      "unlockedCategories": ["EF", "AF", "CS", "BE"],
+      "next": {
+        "success": "boss-04",
+        "failure": "boss-04",
+        "timeout": "boss-04"
+      }
+    },
+    {
+      "id": "boss-04",
+      "type": "boss",
+      "traffic": {
+        "id": "boss-standard",
+        "name": "HTTP Web Traffic",
+        "description": "Standard web browsing requests!",
+        "correctClass": "BE",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.12",
+          "title": "Standard Service Class"
+        }
+      },
+      "timer": {
+        "duration": 3,
+        "type": "boss",
+        "warningAt": 1
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/boss-04.mp4",
+        "success": "cutscenes/level-01/boss-04-success.mp4",
+        "failure": "cutscenes/level-01/boss-04-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/boss-04.json",
+      "citations": ["standard-service-mapping"],
+      "unlockedCategories": ["EF", "AF", "CS", "BE"],
+      "next": {
+        "success": "boss-05",
+        "failure": "boss-05",
+        "timeout": "boss-05"
+      }
+    },
+    {
+      "id": "boss-05",
+      "type": "boss",
+      "traffic": {
+        "id": "boss-scavenger",
+        "name": "Torrent Download",
+        "description": "Large file torrent detected!",
+        "correctClass": "CS1",
+        "rfcReference": {
+          "rfc": 4594,
+          "section": "4.10",
+          "title": "Low-Priority Data Service Class"
+        }
+      },
+      "timer": {
+        "duration": 3,
+        "type": "boss",
+        "warningAt": 1
+      },
+      "assets": {
+        "intro": "cutscenes/level-01/boss-05.mp4",
+        "success": "cutscenes/level-01/boss-05-success.mp4",
+        "failure": "cutscenes/level-01/boss-05-failure.mp4"
+      },
+      "dialog": "content/dialog/level-01/boss-05.json",
+      "citations": ["low-priority-mapping"],
+      "unlockedCategories": ["EF", "AF", "CS", "BE"],
+      "next": {
+        "success": "outro",
+        "failure": "outro",
+        "timeout": "outro"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "intro",
+      "assets": {
+        "intro": "cutscenes/level-01/outro.mp4"
+      },
+      "dialog": "content/dialog/level-01/outro.json",
+      "next": {
+        "success": "debrief",
+        "failure": "debrief"
+      }
+    },
+    {
+      "id": "debrief",
+      "type": "debrief",
+      "assets": {
+        "background": "assets/images/ui/debrief-bg.png"
+      },
+      "next": {
+        "success": "end",
+        "failure": "end"
+      }
+    }
+  ]
+}

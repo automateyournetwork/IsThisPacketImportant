@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://isthispacketimportant.game/schemas/dscp-classes.json",
+  "title": "DSCP Classes",
+  "description": "Schema for the single source of truth DSCP/PHB mapping file",
+  "type": "object",
+  "required": ["version", "classes", "categories"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "categories": {
+      "type": "array",
+      "description": "Top-level classification categories for progressive unlock UI",
+      "items": { "$ref": "#/$defs/Category" }
+    },
+    "classes": {
+      "type": "array",
+      "description": "All DiffServ service classes",
+      "items": { "$ref": "#/$defs/ServiceClass" }
+    }
+  },
+  "$defs": {
+    "Category": {
+      "type": "object",
+      "required": ["id", "name", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": ["EF", "AF", "CS", "BE"],
+          "description": "Category identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full category name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description for UI"
+        },
+        "rfcReference": { "$ref": "#/$defs/RFCReference" }
+      }
+    },
+    "ServiceClass": {
+      "type": "object",
+      "required": ["id", "name", "category", "dscp", "dscpBinary", "phbBehavior", "rfcReference"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Class identifier (e.g., EF, AF11, CS1, BE)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full class name"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["EF", "AF", "CS", "BE"],
+          "description": "Parent category"
+        },
+        "dscp": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 63,
+          "description": "DSCP value"
+        },
+        "dscpBinary": {
+          "type": "string",
+          "pattern": "^[01]{6}$",
+          "description": "6-bit binary representation"
+        },
+        "phbBehavior": {
+          "type": "string",
+          "description": "Per-Hop Behavior description"
+        },
+        "rfcReference": { "$ref": "#/$defs/RFCReference" },
+        "dropPrecedence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3,
+          "description": "For AF classes: 1=low, 2=medium, 3=high"
+        },
+        "afClass": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "description": "For AF classes: class number 1-4"
+        }
+      }
+    },
+    "RFCReference": {
+      "type": "object",
+      "required": ["rfc", "section"],
+      "properties": {
+        "rfc": { "type": "integer" },
+        "section": { "type": "string" },
+        "title": { "type": "string" }
+      }
+    }
+  }
+}

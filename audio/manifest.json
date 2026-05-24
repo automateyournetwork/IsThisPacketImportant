@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "description": "Audio assets manifest for Is This Packet Important?",
+  "lastGenerated": null,
+  "voiceConfig": "audio/voice-config.json",
+  "voiceLines": [],
+  "music": [
+    {
+      "id": "level-01-ambient",
+      "file": "audio/music/level-01-ambient.mp3",
+      "description": "Ambient background music for Level 01",
+      "looping": true
+    },
+    {
+      "id": "level-01-boss",
+      "file": "audio/music/level-01-boss.mp3",
+      "description": "Intense music for boss event",
+      "looping": true
+    }
+  ],
+  "sfx": [
+    {
+      "id": "timer-warning",
+      "file": "audio/sfx/timer-warning.mp3",
+      "description": "Timer low warning beep"
+    },
+    {
+      "id": "decision-correct",
+      "file": "audio/sfx/decision-correct.mp3",
+      "description": "Correct classification sound"
+    },
+    {
+      "id": "decision-incorrect",
+      "file": "audio/sfx/decision-incorrect.mp3",
+      "description": "Incorrect classification sound"
+    },
+    {
+      "id": "decision-timeout",
+      "file": "audio/sfx/decision-timeout.mp3",
+      "description": "Time ran out buzzer"
+    },
+    {
+      "id": "boss-start",
+      "file": "audio/sfx/boss-start.mp3",
+      "description": "Boss event start siren"
+    },
+    {
+      "id": "level-complete",
+      "file": "audio/sfx/level-complete.mp3",
+      "description": "Level completion fanfare"
+    }
+  ]
+}

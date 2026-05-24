@@ -1,0 +1,34 @@
+{
+  "sceneId": "boss-intro",
+  "metadata": {
+    "duration": 15,
+    "music": "level-01-boss"
+  },
+  "lines": [
+    {
+      "id": "boss-intro-01",
+      "character": "mentor",
+      "text": "Uh oh. The traffic light just turned red. Here comes the surge!",
+      "timing": { "start": 0, "end": 4 }
+    },
+    {
+      "id": "boss-intro-02",
+      "character": "narrator",
+      "text": "BOSS EVENT: Rush Hour Surge!",
+      "timing": { "start": 4, "end": 7 },
+      "style": "announcement"
+    },
+    {
+      "id": "boss-intro-03",
+      "character": "mentor",
+      "text": "Five packets, three seconds each. No time to think, just classify!",
+      "timing": { "start": 7, "end": 12 }
+    },
+    {
+      "id": "boss-intro-04",
+      "character": "mentor",
+      "text": "Show me what you've learned. GO!",
+      "timing": { "start": 12, "end": 15 }
+    }
+  ]
+}

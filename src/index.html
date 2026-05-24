@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Is This Packet Important? - An educational game teaching DiffServ packet classification"
+    />
+    <title>Is This Packet Important? - Rush Hour at Router 7</title>
+
+    <!-- Preload critical assets for <3s first frame -->
+    <link rel="preload" href="/cutscenes/level-01/intro.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="/assets/images/ui/logo.png" as="image" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div id="game-container">
+      <!-- Loading screen -->
+      <div id="loading-screen">
+        <div class="loading-content">
+          <h1>Is This Packet Important?</h1>
+          <p>Loading Rush Hour at Router 7...</p>
+          <div class="loading-bar">
+            <div class="loading-progress"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video player layer -->
+      <div id="video-layer">
+        <video id="cutscene-player" preload="auto" playsinline>
+          <source type="video/mp4" />
+        </video>
+      </div>
+
+      <!-- UI overlay layer -->
+      <div id="ui-layer">
+        <!-- Decision UI (shown during QTE moments) -->
+        <div id="decision-ui" class="hidden">
+          <div id="timer-display">
+            <div id="timer-bar"></div>
+            <span id="timer-text">8</span>
+          </div>
+          <div id="category-selector">
+            <!-- Categories populated by decision-ui.js -->
+          </div>
+          <div id="class-selector" class="hidden">
+            <!-- Sub-classes populated when category is selected -->
+          </div>
+        </div>
+
+        <!-- Subtitle overlay -->
+        <div id="subtitle-container">
+          <p id="subtitle-text"></p>
+        </div>
+
+        <!-- Citation display -->
+        <div id="citation-overlay" class="hidden">
+          <div id="citation-content"></div>
+        </div>
+
+        <!-- Term introduction popup -->
+        <div id="term-popup" class="hidden">
+          <div class="term-content">
+            <h3 id="term-name"></h3>
+            <p id="term-definition"></p>
+            <cite id="term-citation"></cite>
+          </div>
+        </div>
+
+        <!-- Debrief screen -->
+        <div id="debrief-screen" class="hidden">
+          <!-- Populated by debrief.js -->
+        </div>
+
+        <!-- Citation toggle button -->
+        <button id="citation-toggle" title="Toggle RFC Citations (C)">
+          <span>RFC</span>
+        </button>
+      </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

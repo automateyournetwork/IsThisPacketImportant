@@ -1,0 +1,346 @@
+{
+  "$schema": "../specs/002-packet-classification-dscp/contracts/dscp-classes-schema.json",
+  "version": "1.0.0",
+  "lastUpdated": "2026-05-24T00:00:00Z",
+  "categories": [
+    {
+      "id": "EF",
+      "name": "Expedited Forwarding",
+      "description": "Premium service for low-latency, low-jitter traffic",
+      "rfcReference": {
+        "rfc": 3246,
+        "section": "2",
+        "title": "The EF PHB"
+      }
+    },
+    {
+      "id": "AF",
+      "name": "Assured Forwarding",
+      "description": "Four classes with three drop precedences each",
+      "rfcReference": {
+        "rfc": 2597,
+        "section": "2",
+        "title": "The AF PHB Group"
+      }
+    },
+    {
+      "id": "CS",
+      "name": "Class Selector",
+      "description": "IP Precedence compatibility codepoints",
+      "rfcReference": {
+        "rfc": 2474,
+        "section": "4.2.2.2",
+        "title": "Class Selector Codepoints"
+      }
+    },
+    {
+      "id": "BE",
+      "name": "Best Effort",
+      "description": "Default forwarding with no guarantees",
+      "rfcReference": {
+        "rfc": 2474,
+        "section": "4.1",
+        "title": "Default PHB"
+      }
+    }
+  ],
+  "classes": [
+    {
+      "id": "EF",
+      "name": "Expedited Forwarding",
+      "category": "EF",
+      "dscp": 46,
+      "dscpBinary": "101110",
+      "phbBehavior": "Low latency, low jitter, assured bandwidth. Used for voice and real-time applications.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.7",
+        "title": "Telephony Service Class"
+      }
+    },
+    {
+      "id": "AF41",
+      "name": "Assured Forwarding 41",
+      "category": "AF",
+      "dscp": 34,
+      "dscpBinary": "100010",
+      "phbBehavior": "High-priority assured forwarding with low drop precedence",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.6",
+        "title": "Real-Time Interactive Service Class"
+      },
+      "afClass": 4,
+      "dropPrecedence": 1
+    },
+    {
+      "id": "AF42",
+      "name": "Assured Forwarding 42",
+      "category": "AF",
+      "dscp": 36,
+      "dscpBinary": "100100",
+      "phbBehavior": "High-priority assured forwarding with medium drop precedence",
+      "rfcReference": {
+        "rfc": 2597,
+        "section": "2",
+        "title": "The AF PHB Group"
+      },
+      "afClass": 4,
+      "dropPrecedence": 2
+    },
+    {
+      "id": "AF43",
+      "name": "Assured Forwarding 43",
+      "category": "AF",
+      "dscp": 38,
+      "dscpBinary": "100110",
+      "phbBehavior": "High-priority assured forwarding with high drop precedence",
+      "rfcReference": {
+        "rfc": 2597,
+        "section": "2",
+        "title": "The AF PHB Group"
+      },
+      "afClass": 4,
+      "dropPrecedence": 3
+    },
+    {
+      "id": "AF31",
+      "name": "Assured Forwarding 31",
+      "category": "AF",
+      "dscp": 26,
+      "dscpBinary": "011010",
+      "phbBehavior": "Medium-high priority assured forwarding with low drop precedence",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.5",
+        "title": "Multimedia Streaming Service Class"
+      },
+      "afClass": 3,
+      "dropPrecedence": 1
+    },
+    {
+      "id": "AF32",
+      "name": "Assured Forwarding 32",
+      "category": "AF",
+      "dscp": 28,
+      "dscpBinary": "011100",
+      "phbBehavior": "Medium-high priority assured forwarding with medium drop precedence",
+      "rfcReference": {
+        "rfc": 2597,
+        "section": "2",
+        "title": "The AF PHB Group"
+      },
+      "afClass": 3,
+      "dropPrecedence": 2
+    },
+    {
+      "id": "AF33",
+      "name": "Assured Forwarding 33",
+      "category": "AF",
+      "dscp": 30,
+      "dscpBinary": "011110",
+      "phbBehavior": "Medium-high priority assured forwarding with high drop precedence",
+      "rfcReference": {
+        "rfc": 2597,
+        "section": "2",
+        "title": "The AF PHB Group"
+      },
+      "afClass": 3,
+      "dropPrecedence": 3
+    },
+    {
+      "id": "AF21",
+      "name": "Assured Forwarding 21",
+      "category": "AF",
+      "dscp": 18,
+      "dscpBinary": "010010",
+      "phbBehavior": "Medium priority assured forwarding with low drop precedence",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.4",
+        "title": "Low-Latency Data Service Class"
+      },
+      "afClass": 2,
+      "dropPrecedence": 1
+    },
+    {
+      "id": "AF22",
+      "name": "Assured Forwarding 22",
+      "category": "AF",
+      "dscp": 20,
+      "dscpBinary": "010100",
+      "phbBehavior": "Medium priority assured forwarding with medium drop precedence",
+      "rfcReference": {
+        "rfc": 2597,
+        "section": "2",
+        "title": "The AF PHB Group"
+      },
+      "afClass": 2,
+      "dropPrecedence": 2
+    },
+    {
+      "id": "AF23",
+      "name": "Assured Forwarding 23",
+      "category": "AF",
+      "dscp": 22,
+      "dscpBinary": "010110",
+      "phbBehavior": "Medium priority assured forwarding with high drop precedence",
+      "rfcReference": {
+        "rfc": 2597,
+        "section": "2",
+        "title": "The AF PHB Group"
+      },
+      "afClass": 2,
+      "dropPrecedence": 3
+    },
+    {
+      "id": "AF11",
+      "name": "Assured Forwarding 11",
+      "category": "AF",
+      "dscp": 10,
+      "dscpBinary": "001010",
+      "phbBehavior": "Low priority assured forwarding with low drop precedence. Used for high-throughput data.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.8",
+        "title": "High-Throughput Data Service Class"
+      },
+      "afClass": 1,
+      "dropPrecedence": 1
+    },
+    {
+      "id": "AF12",
+      "name": "Assured Forwarding 12",
+      "category": "AF",
+      "dscp": 12,
+      "dscpBinary": "001100",
+      "phbBehavior": "Low priority assured forwarding with medium drop precedence",
+      "rfcReference": {
+        "rfc": 2597,
+        "section": "2",
+        "title": "The AF PHB Group"
+      },
+      "afClass": 1,
+      "dropPrecedence": 2
+    },
+    {
+      "id": "AF13",
+      "name": "Assured Forwarding 13",
+      "category": "AF",
+      "dscp": 14,
+      "dscpBinary": "001110",
+      "phbBehavior": "Low priority assured forwarding with high drop precedence",
+      "rfcReference": {
+        "rfc": 2597,
+        "section": "2",
+        "title": "The AF PHB Group"
+      },
+      "afClass": 1,
+      "dropPrecedence": 3
+    },
+    {
+      "id": "CS7",
+      "name": "Class Selector 7 (Network Control)",
+      "category": "CS",
+      "dscp": 56,
+      "dscpBinary": "111000",
+      "phbBehavior": "Network control traffic. Highest priority class selector.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.1",
+        "title": "Network Control Service Class"
+      }
+    },
+    {
+      "id": "CS6",
+      "name": "Class Selector 6 (Internetwork Control)",
+      "category": "CS",
+      "dscp": 48,
+      "dscpBinary": "110000",
+      "phbBehavior": "Internetwork control and routing protocol traffic.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.2",
+        "title": "Telephony Service Class"
+      }
+    },
+    {
+      "id": "CS5",
+      "name": "Class Selector 5 (Signaling)",
+      "category": "CS",
+      "dscp": 40,
+      "dscpBinary": "101000",
+      "phbBehavior": "Signaling traffic for call setup.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.5",
+        "title": "Signaling Service Class"
+      }
+    },
+    {
+      "id": "CS4",
+      "name": "Class Selector 4 (Real-Time Interactive)",
+      "category": "CS",
+      "dscp": 32,
+      "dscpBinary": "100000",
+      "phbBehavior": "Real-time interactive traffic like video conferencing.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.6",
+        "title": "Real-Time Interactive Service Class"
+      }
+    },
+    {
+      "id": "CS3",
+      "name": "Class Selector 3 (Broadcast Video)",
+      "category": "CS",
+      "dscp": 24,
+      "dscpBinary": "011000",
+      "phbBehavior": "Broadcast video and multimedia streaming.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.5",
+        "title": "Multimedia Streaming Service Class"
+      }
+    },
+    {
+      "id": "CS2",
+      "name": "Class Selector 2 (OAM)",
+      "category": "CS",
+      "dscp": 16,
+      "dscpBinary": "010000",
+      "phbBehavior": "Operations, Administration, and Maintenance traffic.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.3",
+        "title": "OAM Service Class"
+      }
+    },
+    {
+      "id": "CS1",
+      "name": "Class Selector 1 (Low Priority)",
+      "category": "CS",
+      "dscp": 8,
+      "dscpBinary": "001000",
+      "phbBehavior": "Low priority data. Lower than best effort during congestion.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.10",
+        "title": "Low-Priority Data Service Class"
+      }
+    },
+    {
+      "id": "BE",
+      "name": "Best Effort (Default)",
+      "category": "BE",
+      "dscp": 0,
+      "dscpBinary": "000000",
+      "phbBehavior": "Default forwarding. No special treatment, best-effort delivery.",
+      "rfcReference": {
+        "rfc": 4594,
+        "section": "4.12",
+        "title": "Standard Service Class"
+      }
+    }
+  ]
+}

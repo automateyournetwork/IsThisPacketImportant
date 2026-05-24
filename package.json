@@ -1,0 +1,49 @@
+{
+  "name": "is-this-packet-important",
+  "version": "1.0.0",
+  "description": "A Dragon's Lair-style educational game teaching DiffServ packet classification",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:citations": "vitest run tests/integration/citation-verify.test.js",
+    "lint": "eslint src scripts tests",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "fetch-citations": "node scripts/fetch-rfc-citations.js",
+    "verify-citations": "node scripts/verify-citations.js",
+    "verify-citations:ci": "node scripts/verify-citations.js --ci --strict",
+    "gen-images": "node scripts/gen-images.js",
+    "gen-cutscenes": "node scripts/gen-cutscenes.js",
+    "gen-tts": "node scripts/gen-tts.js",
+    "gen-placeholders": "node scripts/gen-placeholder-videos.js"
+  },
+  "keywords": [
+    "diffserv",
+    "dscp",
+    "qos",
+    "education",
+    "game",
+    "networking",
+    "rfc4594"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.3.0",
+    "vite": "^5.4.0",
+    "vitest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
