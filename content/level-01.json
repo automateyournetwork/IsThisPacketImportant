@@ -33,7 +33,7 @@
         "correctClass": "EF",
         "rfcReference": {
           "rfc": 4594,
-          "section": "4.7",
+          "section": "4.1",
           "title": "Telephony Service Class"
         }
       },
@@ -78,7 +78,7 @@
         "correctClass": "EF",
         "rfcReference": {
           "rfc": 4594,
-          "section": "4.7",
+          "section": "4.1",
           "title": "Telephony Service Class"
         }
       },
@@ -111,7 +111,7 @@
         "correctClass": "AF41",
         "rfcReference": {
           "rfc": 4594,
-          "section": "4.6",
+          "section": "4.4",
           "title": "Real-Time Interactive Service Class"
         }
       },
@@ -151,7 +151,7 @@
         "correctClass": "AF41",
         "rfcReference": {
           "rfc": 4594,
-          "section": "4.6",
+          "section": "4.4",
           "title": "Real-Time Interactive Service Class"
         }
       },
@@ -257,7 +257,7 @@
         "correctClass": "BE",
         "rfcReference": {
           "rfc": 4594,
-          "section": "4.12",
+          "section": "4.9",
           "title": "Standard Service Class"
         }
       },
@@ -302,7 +302,7 @@
         "correctClass": "BE",
         "rfcReference": {
           "rfc": 4594,
-          "section": "4.12",
+          "section": "4.9",
           "title": "Standard Service Class"
         }
       },
@@ -421,7 +421,7 @@
         "correctClass": "EF",
         "rfcReference": {
           "rfc": 4594,
-          "section": "4.7",
+          "section": "4.1",
           "title": "Telephony Service Class"
         }
       },
@@ -454,7 +454,7 @@
         "correctClass": "AF41",
         "rfcReference": {
           "rfc": 4594,
-          "section": "4.6",
+          "section": "4.4",
           "title": "Real-Time Interactive Service Class"
         }
       },
@@ -520,7 +520,7 @@
         "correctClass": "BE",
         "rfcReference": {
           "rfc": 4594,
-          "section": "4.12",
+          "section": "4.9",
           "title": "Standard Service Class"
         }
       },

@@ -118,7 +118,7 @@ describe('Classification Rules - RFC 4594 Compliance', () => {
         expect(scene.traffic.correctClass, `VoIP traffic in "${scene.id}" should map to EF`).toBe(
           'EF'
         );
-        expect(scene.traffic.rfcReference.section).toBe('4.7');
+        expect(scene.traffic.rfcReference.section).toBe('4.1');
       }
     });
 
@@ -140,7 +140,7 @@ describe('Classification Rules - RFC 4594 Compliance', () => {
           scene.traffic.correctClass,
           `Video traffic in "${scene.id}" should map to AF41`
         ).toBe('AF41');
-        expect(scene.traffic.rfcReference.section).toBe('4.6');
+        expect(scene.traffic.rfcReference.section).toBe('4.4');
       }
     });
 
@@ -178,7 +178,7 @@ describe('Classification Rules - RFC 4594 Compliance', () => {
           scene.traffic.correctClass,
           `Email/standard traffic in "${scene.id}" should map to BE`
         ).toBe('BE');
-        expect(scene.traffic.rfcReference.section).toBe('4.12');
+        expect(scene.traffic.rfcReference.section).toBe('4.9');
       }
     });
 

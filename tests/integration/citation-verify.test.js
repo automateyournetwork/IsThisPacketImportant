@@ -150,7 +150,7 @@ describe('Citation Verification', () => {
       const sections = citations.citations.filter(c => c.rfc === 4594).map(c => c.section);
 
       // Key sections from RFC 4594
-      const requiredSections = ['4.6', '4.7', '4.8', '4.10', '4.12'];
+      const requiredSections = ['4.1', '4.4', '4.8', '4.9', '4.10'];
 
       for (const section of requiredSections) {
         expect(sections.includes(section), `Missing citation for RFC 4594 Section ${section}`).toBe(
@@ -187,8 +187,8 @@ describe('Citation RFC Mapping', () => {
   describe('RFC 4594 Service Class Coverage', () => {
     const rfc4594Citations = () => citations.citations.filter(c => c.rfc === 4594);
 
-    it('should cover Telephony Service Class (Section 4.7)', () => {
-      const telephonyCitations = rfc4594Citations().filter(c => c.section === '4.7');
+    it('should cover Telephony Service Class (Section 4.1)', () => {
+      const telephonyCitations = rfc4594Citations().filter(c => c.section === '4.1');
       expect(telephonyCitations.length).toBeGreaterThan(0);
       expect(
         telephonyCitations.some(
@@ -197,8 +197,8 @@ describe('Citation RFC Mapping', () => {
       ).toBe(true);
     });
 
-    it('should cover Real-Time Interactive Service Class (Section 4.6)', () => {
-      const videoConfCitations = rfc4594Citations().filter(c => c.section === '4.6');
+    it('should cover Real-Time Interactive Service Class (Section 4.4)', () => {
+      const videoConfCitations = rfc4594Citations().filter(c => c.section === '4.4');
       expect(videoConfCitations.length).toBeGreaterThan(0);
       expect(
         videoConfCitations.some(
@@ -234,8 +234,8 @@ describe('Citation RFC Mapping', () => {
       ).toBe(true);
     });
 
-    it('should cover Standard Service Class (Section 4.12)', () => {
-      const standardCitations = rfc4594Citations().filter(c => c.section === '4.12');
+    it('should cover Standard Service Class (Section 4.9)', () => {
+      const standardCitations = rfc4594Citations().filter(c => c.section === '4.9');
       expect(standardCitations.length).toBeGreaterThan(0);
       expect(
         standardCitations.some(

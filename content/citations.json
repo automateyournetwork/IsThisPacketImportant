@@ -25,10 +25,10 @@
       "id": "telephony-ef-mapping",
       "claim": "VoIP and telephony traffic should be marked with EF (DSCP 46) for the Telephony Service Class.",
       "rfc": 4594,
-      "section": "4.7",
+      "section": "4.1",
       "title": "Telephony Service Class",
       "quote": "The Telephony Service Class is intended for voice traffic, such as VoIP. EF marked traffic SHOULD receive expedited forwarding with guaranteed bandwidth and low delay/jitter.",
-      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.7"
+      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.1"
     },
     {
       "id": "af-class-definition",
@@ -43,16 +43,16 @@
       "id": "realtime-interactive-mapping",
       "claim": "Real-time interactive video traffic should be marked with AF41 for the Real-Time Interactive Service Class.",
       "rfc": 4594,
-      "section": "4.6",
+      "section": "4.4",
       "title": "Real-Time Interactive Service Class",
       "quote": "The Real-Time Interactive Service Class is intended for interactive applications with real-time traffic patterns, particularly video conferencing. This traffic SHOULD be marked AF41.",
-      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.6"
+      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.4"
     },
     {
       "id": "af-drop-precedence",
       "claim": "Within an AF class, packets can have low (1), medium (2), or high (3) drop precedence. Higher precedence packets are dropped first during congestion.",
       "rfc": 2597,
-      "section": "2.1",
+      "section": "2",
       "title": "AF Drop Precedence",
       "quote": "Within each AF class, an IP packet is assigned one of three possible drop precedence values. In case of congestion, the drop precedence of a packet determines the relative importance of the packet within the AF class.",
       "url": "https://www.rfc-editor.org/rfc/rfc2597#section-2"
@@ -70,10 +70,10 @@
       "id": "standard-service-mapping",
       "claim": "Standard traffic like email and web browsing should be marked with DSCP 0 (Best Effort) for the Standard Service Class.",
       "rfc": 4594,
-      "section": "4.12",
+      "section": "4.9",
       "title": "Standard Service Class",
       "quote": "The Standard Service Class is intended for undifferentiated traffic. This is the default behavior and is sometimes called 'Best Effort'. DSCP value of 0 is used.",
-      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.12"
+      "url": "https://www.rfc-editor.org/rfc/rfc4594#section-4.9"
     },
     {
       "id": "be-default-behavior",
